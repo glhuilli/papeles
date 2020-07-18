@@ -68,4 +68,3 @@ def get_references(sentences: List[str]) -> List[str]:
      - get references structure (title, authors, etc.)
     """
     pass
-

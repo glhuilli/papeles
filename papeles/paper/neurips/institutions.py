@@ -1,7 +1,8 @@
-from typing import List, Optional
+from typing import Dict, List, Optional
+from collections import Counter
 
 from papeles.paper.neurips import parsing_constants as pc
-from papeles.utils.header import match_keywords
+from papeles.utils.header import get_tokens
 
 
 _FIND_LOCATION_INSTITUTIONS = ('university of california',
@@ -12,7 +13,7 @@ _FIND_LOCATION_INSTITUTIONS = ('university of california',
                                'university of texas at')
 
 
-_TEAM_KEYWORDS = (
+_INSTITUTIONS_KEYWORDS = (
     'university', 'group', 'dept', 'science', 'laboratory', 'lab', 'research', 'iiit',
     'inc.', 'labs', 'institute', 'technology', 'tech', 'dept.', 'sciences', 'department', 'engineering',
     'computer', 'ecole', 'inria', 'fraunhofer', 'inc', 'informatics', 'centre', 'mit', 'eecs', 'laboratoire',
@@ -71,25 +72,28 @@ def add_location(line, institution):
 
 
 def parse_institutions(header: List[str]) -> List[List[str]]:
+    """
+    Iterates over the lines in a header, finding matches with institution keywords and
+    expanding institutions based on following lines.
+    """
     institutions = []
     institution = []
     institutions_no_at = []
 
     find_location = False
     for line in header:
-        match_line = match_keywords(line, _TEAM_KEYWORDS)
+        match_line = get_tokens(line)
         match_line_joined = ' '.join(match_line).strip()
-        match_intersection = set(match_line).intersection(_TEAM_KEYWORDS)
+        match_intersection = set(match_line).intersection(_INSTITUTIONS_KEYWORDS)
 
         if find_location:
             add_location(line, institution)
-            find_location = False
         find_location = match_line_joined in _FIND_LOCATION_INSTITUTIONS
 
         if match_intersection:
             institutions_no_at.append([match_line_joined])
 
-        if '@' in line:
+        if '@' in line:  # means that there's an email in the line, usually at the end of the name of the institution
             institutions.append(institution)
             institution = []
             continue
@@ -125,3 +129,26 @@ def fix_institution_name(name: str) -> Optional[str]:
     if name in pc.INSTITUTIONS_DELETE:
         return None
     return pc.INSTITUTIONS_MAPPING.get(name, name)
+
+
+def get_institutions_frequency(file_lines: Dict[str, List[str]]) -> Dict[str, int]:
+    inst_counter = Counter()
+    for file, lines in list(file_lines.items()):
+        file_institutions = []
+        for institution in parse_institutions(lines):
+            if institution:
+                name = fix_typo(institution[-1])
+                names = fix_institution_parsing(name)
+                for name in names:
+                    file_institutions.append(fix_institution_name(name))
+        unique_file_institutions = list(set(file_institutions))
+        inst_counter.update(unique_file_institutions)
+
+    cleaned = len([x for x in inst_counter.items() if x[1] > 0 and x[0]])
+    total = sum([x[1] for x in inst_counter.items() if x[1] > 0 and x[0]])
+
+    print(f'current institutions: {cleaned}')
+    print(f'total raw institutions: {total}')
+    print(f'clean-up fraction: {"{:0.2f}".format(1 - cleaned / total)}')
+
+    return inst_counter

@@ -10,7 +10,7 @@ def clean_word(w: str) -> str:
                                               '1', '2', '3', '4', '5', '6']])
 
 
-def match_keywords(line) -> List[str]:
+def get_tokens(line) -> List[str]:
     """
     Match keywords strategy for a paper header
     """

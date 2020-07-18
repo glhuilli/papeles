@@ -28,17 +28,3 @@ def load_folder(folder: str) -> Tuple[Dict[Union[bytes, str], Iterable[str]], di
     for file in os.listdir(os.path.join(folder, 'pdfs')):
         files[file] = pdf_parser.get_text(os.path.join(folder, 'pdfs', file), local=True)
     return files, year_data
-
-#
-# NEURIPS_DATA_OUTPUT = '/Users/gastonlhuillier/Personal/neurips_crawler/output'
-#
-# data = {}  # year -> NeurIPS object
-# files = {}  # file_name -> text of file
-# for folder in tqdm(os.listdir(NEURIPS_DATA_OUTPUT)):
-#     year = folder.split('_')[-1]
-#     ffiles, fdata = load_folder(os.path.join(NEURIPS_DATA_OUTPUT, folder))
-#     data[year] = fdata
-#     files.update(ffiles)
-#
-# print(f'total years of data: {len(data)}')
-# print(f'total papers: {len(files)}')
