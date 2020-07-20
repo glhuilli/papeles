@@ -21,7 +21,9 @@ def get_sentences(sentences: List[str]) -> List[str]:
     5. exclude anything before the abstract
     6. exclude anything after the references or acknowledgements
     7. skip sentences with length 1
-  """
+
+    FIXME: Improve speed of this method as it's painfully slow at this moment.
+    """
     include = False
     full_paper = []
     for s in sentences:
