@@ -79,6 +79,7 @@ INSTITUTIONS_MAPPING = {
     'computer science department stanford university stanford ca 9': 'stanford university',
     'computer science department stanford university stanford ca 9 usa': 'stanford university',
     'stanford university stanford ca': 'stanford university',
+    'stanford graduate school of business': 'stanford university',
     'uc santa barbara': 'university of california santa barbara',
     'uc santa barbara ca usa': 'university of california santa barbara',
     'uc santa cruz': 'university of california santa cruz',
@@ -151,6 +152,7 @@ INSTITUTIONS_MAPPING = {
     'department of computer science and engineering university of california san diego': 'university of california san diego',
     'uc davis': 'university of california davis',
     'adobe research ca': 'adobe research',
+    'adobe research seattle': 'adobe research',
     'university of montreal': 'universite de montreal',
     'university of montreal (mila)': 'universite de montreal',
     'universite de montreal cifar fellow': 'universite de montreal',
@@ -192,6 +194,7 @@ INSTITUTIONS_MAPPING = {
     'amazon research': 'amazon',
     'amazon inc': 'amazon',
     'amazon research tübingen': 'amazon',
+    'amazon rekognition': 'amazon',
     'microsoft research india': 'microsoft research',
     'microsoft research asia': 'microsoft research',
     'microsoft research ai': 'microsoft research',
@@ -523,6 +526,7 @@ INSTITUTIONS_MAPPING = {
     'computer science and artiﬁcial intelligence lab massachusetts institute of technology': 'mit',
     'massachusetts institute of technology eecs': 'mit',
     'massachusetts institute of technology lincoln laboratory': 'mit',
+    'massachussetts institute of technology': 'mit',
     'department of brain and cognitive sciences massachusetts institute of technology': 'mit',
     'electrical engineering & computer science massachusetts institute of technology': 'mit',
     'dept of electrical engineering and computer science massachusetts institute of technology usa': 'mit',
@@ -561,7 +565,7 @@ INSTITUTIONS_MAPPING = {
     'department of electrical engineering  neuroscience institute princeton university': 'princeton university',
     'princeton neuroscience institute and department of psychology princeton university': 'princeton university',
     'google ai princeton': 'google',
-
+    'university of copenhagen denmark': 'university of copenhagen'
 }
 
 INSTITUTIONS_DELETE = (
@@ -613,6 +617,7 @@ INSTITUTIONS_DELETE = (
     'university park pa 8',
     'electrical and computer engineering',
     'department of electrical engineering and computer science',
+    'stanford ca 9 usa'
 )
 
 INSTITUTION_PARSING_FIXES = {
@@ -717,6 +722,10 @@ INSTITUTION_PARSING_FIXES = {
     'google brain and princeton university': ['princeton university', 'google brain'],
     'princeton university and google ai princeton': ['princeton university', 'google'],
     '#university of tübingen and max planck institute for intelligent systems tübingen germany': ['max planck institute', 'university of tübingen'],
+    'bar ilan university and google': ['bar ilan university', 'google'],
+    'université de lorraine cnrs inria loria': ['universite de lorraine', 'cnrs', 'inria'],
+    'univ rennes inria cnrs irisa': ['universite rennes', 'inria', 'cnrs', 'irisa']
+
     #      ('microsoft research and wharton u penn', 1),
     #  ('(cid9)australian national university (anu) and national ict australia (nicta) canberra australia',
     #   1),
