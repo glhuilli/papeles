@@ -152,3 +152,19 @@ def get_institutions_frequency(file_lines: Dict[str, List[str]]) -> Dict[str, in
     print(f'clean-up fraction: {"{:0.2f}".format(1 - cleaned / total)}')
 
     return inst_counter
+
+
+def get_file_institutions(lines, filtered_institutions=None):
+    file_institutions = []
+    for institution in parse_institutions(lines):
+        if institution:
+            name = fix_typo(institution[-1])
+            names = fix_institution_parsing(name)
+            for name in names:
+                fixed_name = fix_institution_name(name)
+                if filtered_institutions:
+                    if fixed_name in filtered_institutions:
+                        file_institutions.append(fixed_name)
+                else:
+                    file_institutions.append(fixed_name)
+    return file_institutions
