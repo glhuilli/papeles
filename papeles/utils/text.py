@@ -176,3 +176,7 @@ def process_content(sentence: str, terms_mapping: Optional[Dict[str, str]] = Non
         for term, mapping in terms_mapping.items():
             sentence = re.sub(rf'\b{term}\b', mapping, sentence, flags=re.I)
     return list(_remove_stopwords(_tokenizer(_clean_text(sentence))))
+
+
+def generate_ngram_text(text, ngram):
+    return ['_'.join(x) for x in ngrams_simple(' '.join(process_content(text)), ngram)]
