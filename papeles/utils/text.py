@@ -1,5 +1,8 @@
+from collections import defaultdict, Counter
 import re
 from typing import Dict, Iterable, List, Optional
+
+from nltk.stem import PorterStemmer
 
 
 _STOPWORDS = frozenset({
@@ -180,3 +183,22 @@ def process_content(sentence: str, terms_mapping: Optional[Dict[str, str]] = Non
 
 def generate_ngram_text(text: str, ngram: int) -> List[str]:
     return ['_'.join(x) for x in ngrams_simple(' '.join(process_content(text)), ngram)]
+
+
+def get_stem_mapping(corpus_words: List[str]) -> Dict[str, str]:
+    porter = PorterStemmer()
+    stem_mapping = defaultdict(list)
+    for w in corpus_words:
+        stem = porter.stem(w)
+        stem_mapping[stem].append(w)
+
+    to_delete = [k for k, v in stem_mapping.items() if len(set(v)) == 1]
+    for i in to_delete:
+        del stem_mapping[i]
+
+    main_stem_mapping = {}
+    for k, word_list in stem_mapping.items():
+        max_freq_word = sorted(Counter(word_list).items(), key=lambda x: x[1], reverse=True)[0]
+        for w in set(word_list):
+            main_stem_mapping[w] = max_freq_word[0]
+    return main_stem_mapping

@@ -1,4 +1,4 @@
-from typing import List
+from typing import Dict, List
 
 from collections import Counter
 import math
@@ -41,9 +41,9 @@ def tfidf(word: str, text: List[str], text_list: List[List[str]]) -> float:
     return tf(word, text) * idf(word, text_list)
 
 
-def get_keywords(text_list: List[List[str]], top_doc_keywords: int = 20) -> Counter[str, int]:
+def get_keywords(text_list: List[List[str]], top_doc_keywords: int = 20) -> Dict[str, int]:
     """
-    Only using top 20 keywords per document, ranked by TF-IDF.
+    Only using top 20 (default) keywords per document, ranked by TF-IDF.
 
     Note that text in text_list is a list of words.
     """
@@ -52,4 +52,4 @@ def get_keywords(text_list: List[List[str]], top_doc_keywords: int = 20) -> Coun
         scores = {word: tfidf(word, text, text_list) for word in text}
         sorted_words = sorted(scores.items(), key=lambda x: x[1], reverse=True)
         keywords_counter.update([x[0] for x in sorted_words[:top_doc_keywords]])
-    return keywords_counter
+    return dict(keywords_counter)
