@@ -178,5 +178,5 @@ def process_content(sentence: str, terms_mapping: Optional[Dict[str, str]] = Non
     return list(_remove_stopwords(_tokenizer(_clean_text(sentence))))
 
 
-def generate_ngram_text(text, ngram):
+def generate_ngram_text(text: str, ngram: int) -> List[str]:
     return ['_'.join(x) for x in ngrams_simple(' '.join(process_content(text)), ngram)]

@@ -4,32 +4,32 @@ from collections import Counter
 import math
 
 
-def count_word(word: str, word_list: List[str]):
+def count_word(word: str, word_list: List[str]) -> int:
     """
     Counts how many times a word is present in a document
     """
     return sum(1 for w in word_list if w == word)
 
 
-def tf(word: str, word_list: List[str]):
+def tf(word: str, word_list: List[str]) -> float:
     """
     Frequency of a word in a document normalized by length of document
     """
     return count_word(word, word_list) / len(word_list)
 
 
-def n_containing(word: str, text_list: List[List[str]]):
+def n_containing(word: str, text_list: List[List[str]]) -> int:
     return sum(1 for text in text_list if word in text)
 
 
-def idf(word: str, text_list: List[List[str]]):
+def idf(word: str, text_list: List[List[str]]) -> float:
     """
     Inverse document frequency of word in a collection of documents
     """
     return math.log(len(text_list) / (1 + n_containing(word, text_list)))
 
 
-def tfidf(word: str, text: List[str], text_list: List[List[str]]):
+def tfidf(word: str, text: List[str], text_list: List[List[str]]) -> float:
     """
     Computes the TF-IDF value for a word in a particular text, using a collection of
     documents.
@@ -41,7 +41,7 @@ def tfidf(word: str, text: List[str], text_list: List[List[str]]):
     return tf(word, text) * idf(word, text_list)
 
 
-def get_keywords(text_list: List[List[str]], top_doc_keywords: int = 20):
+def get_keywords(text_list: List[List[str]], top_doc_keywords: int = 20) -> Counter[str, int]:
     """
     Only using top 20 keywords per document, ranked by TF-IDF.
 
