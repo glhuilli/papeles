@@ -59,6 +59,20 @@ def graph_to_d3js(graph):
         json.dump(output_graph, f)
 
 
+def dump_to_d3js(graph, file):
+    output = []
+    for node in graph.nodes():
+        edges = graph.edges(node)
+        imports = []
+        for edge in edges:
+            for e in edge:
+                if e != node:
+                    imports.append(e)
+        output.append({'name': node, 'size': len(edges), 'edges': imports})
+    with open(file, 'w') as f:
+        json.dump(output, f)
+
+
 def plot_graph(graph):
     node_size = []
     for node, degree in graph.degree():
