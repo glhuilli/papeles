@@ -59,16 +59,23 @@ def graph_to_d3js(graph):
         json.dump(output_graph, f)
 
 
-def dump_to_d3js(graph, file):
+def dump_to_d3js_heb(graph, file: str) -> None:
+    """
+    Given a networkx graph save it to file in hierarchical edge bundling (heb) format
+
+    Consider target/source dependency using the degree of a node:
+        - Only include in edges nodes with lower degree than source node
+    """
     output = []
     for node in graph.nodes():
         edges = graph.edges(node)
-        imports = []
+        targets = []
         for edge in edges:
             for e in edge:
                 if e != node:
-                    imports.append(e)
-        output.append({'name': node, 'size': len(edges), 'edges': imports})
+                    if graph.degree[e] < graph.degree[node]:
+                        targets.append(e)
+        output.append({'name': node, 'size': len(edges), 'edges': targets})
     with open(file, 'w') as f:
         json.dump(output, f)
 
