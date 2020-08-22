@@ -44,7 +44,7 @@ def build_institutions_graph(file_lines, metadata, inst_counter, freq=None, year
     return graph, graph_node_files
 
 
-def graph_to_d3js(graph):
+def graph_to_d3js(graph, file: str) -> None:
     """
     Output graph compatible with D3.js network structure
     """
@@ -55,7 +55,7 @@ def graph_to_d3js(graph):
         nodes.add(e[0])
         nodes.add(e[1])
     output_graph['nodes'] = [{'id': n, 'group': 1} for n in list(nodes)]
-    with open('neurips_institutions.json', 'w') as f:
+    with open(file, 'w') as f:
         json.dump(output_graph, f)
 
 
@@ -80,7 +80,7 @@ def dump_to_d3js_heb(graph, file: str) -> None:
         json.dump(output, f)
 
 
-def plot_graph(graph):
+def plot_graph(graph, file: str) -> None:
     node_size = []
     for node, degree in graph.degree():
         if degree < 5:
@@ -117,4 +117,51 @@ def plot_graph(graph):
             edge_color=edge_colors,
             width=edge_width,
             alpha=0.8)
-    plt.savefig("institutions_graph.png")
+    plt.savefig(file)
+
+
+def dump_to_treemap_d3js(graph, file: str, cluster_threshold: int = 3) -> None:
+    """
+    Dumps into an output json file all clusters and the information for each institution about their
+    centrality scores.
+
+    Given that it's an undirected graph, the centrality scores included are:
+         - hub
+         - authorities
+         - betweenness
+         - closeness centrality
+         - katz centrality
+         - eigen centrality
+    """
+    partition = community.best_partition(graph)
+    institution_clusters = defaultdict(list)
+    for k, p in partition.items():
+        institution_clusters[p].append(k)
+    eigen_centrality = nx.eigenvector_centrality(graph)
+    katz_centrality = nx.katz_centrality_numpy(graph)
+    closeness_centrality = nx.closeness_centrality(graph)
+    betweenness_centrality = nx.betweenness_centrality(graph)
+    hubs, authorities = nx.hits(graph)
+
+    output = {'name': 'institutions', 'children': []}
+    for k, v in institution_clusters.items():
+        if len(v) > cluster_threshold:
+            name_k = f'cluster_{k}'
+            cluster_childrens = {'name': name_k, 'children': []}
+            for institution in v:
+                degree = graph.degree[institution]
+                institution_data = {
+                    'name': institution,
+                    'hub': hubs[institution],
+                    'authorities': authorities[institution],
+                    'betweenness': betweenness_centrality[institution],
+                    'closeness': closeness_centrality[institution],
+                    'katz': katz_centrality[institution],
+                    'eigen': eigen_centrality[institution],
+                    'size': degree
+                }
+                cluster_childrens['children'].append(institution_data)
+            output['children'].append(cluster_childrens)
+
+    with open(file, 'w') as f:
+        json.dump(output, f)
