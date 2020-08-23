@@ -28,7 +28,7 @@ def get_sentences(sentences: List[str]) -> List[str]:
     full_paper = []
     for s in sentences:
         s = s.strip()
-        if s.lower() == 'introduction':
+        if s.lower() == 'introduction' or s.split(' ')[-1].lower() == 'introduction':
             include = True
             continue
         if s.lower() == 'references' or s.lower() == 'acknowledgments':
@@ -62,6 +62,37 @@ def get_header(sentences: List[str]) -> List[str]:
             break
         header.append(s)
     return header
+
+
+def get_abstract(sentences: List[str]) -> List[str]:
+    """
+    Extract abstract from paper (anything between "abstract" and "introduction")
+    """
+    abstract = []
+    include = False
+    for s in sentences:
+        s = s.strip()
+        if s.lower() == 'abstract':
+            include = True
+            continue
+        if s.lower() == 'introduction' or s.split(' ')[-1].lower() == 'introduction':  # TODO: refactor
+            include = False
+        if len(s.split(' ')) == 1:
+            continue
+        if include:
+            for t in s.split(' '):
+                if keep_word(t):
+                    abstract.append(t)
+    sentences = []
+    s = ''
+    for c in ' '.join(abstract):
+        if c not in '.!?':
+            s += c
+        else:
+            s += c
+            sentences.append(s.strip())
+            s = ''
+    return sentences
 
 
 def get_references(sentences: List[str]) -> List[str]:
