@@ -1,3 +1,5 @@
+from typing import Any, Dict, List, Set
+
 import itertools
 from collections import defaultdict
 import json
@@ -16,11 +18,11 @@ def build_institutions_graph(file_lines, metadata, inst_counter, freq=None, year
     - Year of publishing
     """
     filtered_institutions = set([x[0] for x in inst_counter.items() if x[1] > freq and x[0]])
-    year_keys = defaultdict(list)
+    year_keys: Dict[str, List[str]] = defaultdict(list)
     for k, d in metadata.items():
         year_keys[d.get('year')].append(k)
 
-    graph_node_files = defaultdict(set)
+    graph_node_files: Dict[str, Set[str]] = defaultdict(set)
     graph = nx.Graph()
     for file, lines in list(file_lines.items()):
         if year and not (file in year_keys.get(year, {})):
@@ -48,7 +50,7 @@ def graph_to_d3js(graph, file: str) -> None:
     """
     Output graph compatible with D3.js network structure
     """
-    output_graph = {'nodes': [], 'links': []}
+    output_graph: Dict[str, Any] = {'nodes': [], 'links': []}
     nodes = set()
     for e in graph.edges():
         output_graph['links'].append({'source': e[0], 'target': e[1], 'value': graph[e[0]][e[1]]['weight']})
@@ -134,7 +136,7 @@ def dump_to_treemap_d3js(graph, file: str, cluster_threshold: int = 3) -> None:
          - eigen centrality
     """
     partition = community.best_partition(graph)
-    institution_clusters = defaultdict(list)
+    institution_clusters: Dict[str, List[str]] = defaultdict(list)
     for k, p in partition.items():
         institution_clusters[p].append(k)
     eigen_centrality = nx.eigenvector_centrality(graph)
@@ -143,11 +145,11 @@ def dump_to_treemap_d3js(graph, file: str, cluster_threshold: int = 3) -> None:
     betweenness_centrality = nx.betweenness_centrality(graph)
     hubs, authorities = nx.hits(graph)
 
-    output = {'name': 'institutions', 'children': []}
+    output: Dict[str, Any] = {'name': 'institutions', 'children': []}
     for k, v in institution_clusters.items():
         if len(v) > cluster_threshold:
             name_k = f'cluster_{k}'
-            cluster_childrens = {'name': name_k, 'children': []}
+            cluster_childrens: Dict[str, Any] = {'name': name_k, 'children': []}
             for institution in v:
                 degree = graph.degree[institution]
                 institution_data = {

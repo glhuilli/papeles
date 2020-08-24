@@ -1,7 +1,10 @@
-from typing import Dict, List
+from typing import Counter as CounterType, Dict, List
 
 from collections import Counter
 import math
+
+
+# TODO: consider replacing these methods with Gensim
 
 
 def count_word(word: str, word_list: List[str]) -> int:
@@ -47,7 +50,7 @@ def get_keywords(text_list: List[List[str]], top_doc_keywords: int = 20) -> Dict
 
     Note that text in text_list is a list of words.
     """
-    keywords_counter = Counter()
+    keywords_counter: CounterType[str] = Counter()
     for text in text_list:
         scores = {word: tfidf(word, text, text_list) for word in text}
         sorted_words = sorted(scores.items(), key=lambda x: x[1], reverse=True)

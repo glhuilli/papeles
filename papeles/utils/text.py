@@ -124,7 +124,7 @@ def keep_word(token: str) -> bool:
         1. removing some characters
         2. checking if the remaining characters are alphanumeric
     """
-    return ''.join([x for x in token if x not in '.!?']).isalnum()
+    return ''.join([x for x in token if x not in '-,.!?']).isalnum()
 
 
 def ngrams_simple(text, n):
@@ -187,7 +187,7 @@ def generate_ngram_text(text: str, ngram: int) -> List[str]:
 
 def get_stem_mapping(corpus_words: List[str]) -> Dict[str, str]:
     porter = PorterStemmer()
-    stem_mapping = defaultdict(list)
+    stem_mapping: Dict[str, List[str]] = defaultdict(list)
     for w in corpus_words:
         stem = porter.stem(w)
         stem_mapping[stem].append(w)

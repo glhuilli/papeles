@@ -1,12 +1,12 @@
 import json
 import os
-from typing import Iterable, Dict, Tuple, Union
+from typing import Any, Iterable, Dict, List, Tuple
 
 
 from papeles.utils import pdf_parser
 
 
-def load_folder(folder: str) -> Tuple[Dict[Union[bytes, str], Iterable[str]], dict]:
+def load_folder(folder: str) -> Tuple[Dict[str, Iterable[List[str]]], Dict[str, Any]]:
     """
     Loads data from the folder output using neurips_crawler
 

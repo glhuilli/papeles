@@ -1,6 +1,7 @@
 from typing import Iterable, List
 
 from papeles.utils.text import keep_word
+from papeles.types import ACM_TYPE
 
 
 def flatten(paper: List[List[str]]) -> Iterable[str]:
@@ -14,6 +15,9 @@ def flatten(paper: List[List[str]]) -> Iterable[str]:
 
 def get_sentences(sentences: List[str]) -> List[str]:
     """
+    Given the nature of the input is very messy and unreliable (from PDF parser), I decided not to use
+    a more sophisticated package for this (e.g. SpaCy) and build the sentences "manually".
+
     1. tokenize by simple space
     2. keep any word with alphanumeric + stops (.!?)
     3. concatenate all sentences
@@ -64,9 +68,21 @@ def get_header(sentences: List[str]) -> List[str]:
     return header
 
 
-def get_abstract(sentences: List[str]) -> List[str]:
+def get_abstract_sentences(sentences: List[str], document_type: str = None) -> List[str]:
     """
     Extract abstract from paper (anything between "abstract" and "introduction")
+
+    Given the nature of the input is very messy and unreliable (from PDF parser), I decided not to use
+    a more sophisticated package for this (e.g. SpaCy) and build the sentences "manually".
+
+    1. tokenize by simple space
+    2. keep any word with alphanumeric + stops (.!?)
+    3. concatenate all sentences
+    4. create new sentences based in stops kept from step 2
+    5. include anything after "abstract"
+    6. exclude anything before "introduction"
+        6.1. FIXME: Depending on the type of document, there might be a better rule for this (e.g. ACM)
+    7. skip sentences with length 1
     """
     abstract = []
     include = False
@@ -75,7 +91,7 @@ def get_abstract(sentences: List[str]) -> List[str]:
         if s.lower() == 'abstract':
             include = True
             continue
-        if s.lower() == 'introduction' or s.split(' ')[-1].lower() == 'introduction':  # TODO: refactor
+        if _verify_abstract_stop(s, document_type):  # TODO: refactor
             include = False
         if len(s.split(' ')) == 1:
             continue
@@ -83,16 +99,7 @@ def get_abstract(sentences: List[str]) -> List[str]:
             for t in s.split(' '):
                 if keep_word(t):
                     abstract.append(t)
-    sentences = []
-    s = ''
-    for c in ' '.join(abstract):
-        if c not in '.!?':
-            s += c
-        else:
-            s += c
-            sentences.append(s.strip())
-            s = ''
-    return sentences
+    return _build_sentences(abstract)
 
 
 def get_references(sentences: List[str]) -> List[str]:
@@ -101,3 +108,23 @@ def get_references(sentences: List[str]) -> List[str]:
      - get references structure (title, authors, etc.)
     """
     pass
+
+
+def _verify_abstract_stop(sentence: str, document_type: str = None) -> bool:
+    main_rule = sentence.lower() == 'introduction' or sentence.split(' ')[-1].lower() == 'introduction'
+    if document_type == ACM_TYPE:
+        return 'ccs concepts' in sentence.lower() or sentence.lower() == 'keywords' or main_rule
+    return main_rule
+
+
+def _build_sentences(lines: List[str]) -> List[str]:
+    sentences = []
+    s = ''
+    for c in ' '.join(lines):
+        if c not in '.!?':
+            s += c
+        else:
+            s += c
+            sentences.append(s.strip())
+            s = ''
+    return sentences

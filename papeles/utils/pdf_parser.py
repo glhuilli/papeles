@@ -1,5 +1,5 @@
 from io import BytesIO, StringIO
-from typing import Iterable
+from typing import Iterable, List
 
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
@@ -20,7 +20,7 @@ def get_document(path: str, local=True):
     return BytesIO(file_r.content)
 
 
-def get_text(pdf_path: str, local: bool) -> Iterable[str]:
+def get_text(pdf_path: str, local: bool) -> Iterable[List[str]]:
     """
     Given a pdf file path, returns an Iterable[str] where each string is a line in the pdf file.
     """

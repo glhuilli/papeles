@@ -1,11 +1,11 @@
 import os
-from typing import Iterable, Dict, Union
+from typing import Iterable, Dict, List, Union
 
 
 from papeles.utils import pdf_parser
 
 
-def load_folder(folder: str) -> Dict[Union[bytes, str], Iterable[str]]:
+def load_folder(folder: str) -> Dict[str, Iterable[List[str]]]:
     """
     Loads data from the folder output using KDD data
 

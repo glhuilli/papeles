@@ -1,4 +1,4 @@
-from typing import Dict, List, Optional
+from typing import Any, Counter as CounterType, Dict, List, Optional, Set
 from collections import Counter
 
 from papeles.paper.neurips import parsing_constants as pc
@@ -77,7 +77,7 @@ def parse_institutions(header: List[str]) -> List[List[str]]:
     expanding institutions based on following lines.
     """
     institutions = []
-    institution = []
+    institution: List[str] = []
     institutions_no_at = []
 
     find_location = False
@@ -118,7 +118,7 @@ def fix_institution_parsing(name: str) -> List[str]:
     Fix parsing, usually maps two or more institutions to the output
     """
     if name in pc.INSTITUTION_PARSING_FIXES:
-        return pc.INSTITUTION_PARSING_FIXES.get(name)
+        return pc.INSTITUTION_PARSING_FIXES.get(name, [])
     return [name]
 
 
@@ -132,7 +132,10 @@ def fix_institution_name(name: str) -> Optional[str]:
 
 
 def get_institutions_frequency(file_lines: Dict[str, List[str]]) -> Dict[str, int]:
-    inst_counter = Counter()
+    """
+    Given a dictionary with files and the respective relevant lines, get a Counter for all institutions
+    """
+    inst_counter: CounterType[Any] = Counter()
     for file, lines in list(file_lines.items()):
         file_institutions = []
         for institution in parse_institutions(lines):
@@ -144,17 +147,13 @@ def get_institutions_frequency(file_lines: Dict[str, List[str]]) -> Dict[str, in
         unique_file_institutions = list(set(file_institutions))
         inst_counter.update(unique_file_institutions)
 
-    cleaned = len([x for x in inst_counter.items() if x[1] > 0 and x[0]])
-    total = sum([x[1] for x in inst_counter.items() if x[1] > 0 and x[0]])
-
-    print(f'current institutions: {cleaned}')
-    print(f'total raw institutions: {total}')
-    print(f'clean-up fraction: {"{:0.2f}".format(1 - cleaned / total)}')
-
     return inst_counter
 
 
-def get_file_institutions(lines, filtered_institutions=None):
+def get_file_institutions(lines: List[str], filtered_institutions: Set[str] = None) -> List[str]:
+    """
+    Given all relevant lines from a file, return all institutions found
+    """
     file_institutions = []
     for institution in parse_institutions(lines):
         if institution:
@@ -166,5 +165,6 @@ def get_file_institutions(lines, filtered_institutions=None):
                     if fixed_name in filtered_institutions:
                         file_institutions.append(fixed_name)
                 else:
-                    file_institutions.append(fixed_name)
+                    if fixed_name:
+                        file_institutions.append(fixed_name)
     return file_institutions
