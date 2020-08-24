@@ -1,12 +1,11 @@
+import itertools
+import json
+from collections import defaultdict
 from typing import Any, Dict, List, Set
 
-import itertools
-from collections import defaultdict
-import json
-
 import community
-import networkx as nx
 import matplotlib.pyplot as plt
+import networkx as nx
 
 from papeles.paper.neurips import institutions
 

@@ -1,9 +1,8 @@
-from collections import defaultdict, Counter
 import re
+from collections import Counter, defaultdict
 from typing import Dict, Iterable, List, Optional
 
 from nltk.stem import PorterStemmer
-
 
 # FIXME: Highly likely that most of these methods can be replaced by something similar in SpaCy.
 

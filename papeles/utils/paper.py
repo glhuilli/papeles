@@ -1,7 +1,7 @@
 from typing import Iterable, List
 
-from papeles.utils.text import keep_word
 from papeles.types import ACM_TYPE
+from papeles.utils.text import keep_word
 
 
 def flatten(paper: List[List[str]]) -> Iterable[str]:

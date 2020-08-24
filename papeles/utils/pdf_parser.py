@@ -1,13 +1,13 @@
 from io import BytesIO, StringIO
 from typing import Iterable, List
 
+import requests
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfdocument import PDFDocument
 from pdfminer.pdfinterp import PDFPageInterpreter, PDFResourceManager
 from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
-import requests
 
 
 def get_document(path: str, local=True):

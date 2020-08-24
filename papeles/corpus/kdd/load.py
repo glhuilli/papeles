@@ -1,6 +1,5 @@
 import os
-from typing import Iterable, Dict, List, Union
-
+from typing import Dict, Iterable, List, Union
 
 from papeles.utils import pdf_parser
 

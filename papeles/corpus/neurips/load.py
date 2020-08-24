@@ -1,7 +1,6 @@
 import json
 import os
-from typing import Any, Iterable, Dict, List, Tuple
-
+from typing import Any, Dict, Iterable, List, Tuple
 
 from papeles.utils import pdf_parser
 

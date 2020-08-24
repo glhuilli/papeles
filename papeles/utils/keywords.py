@@ -1,8 +1,6 @@
-from typing import Counter as CounterType, Dict, List
-
-from collections import Counter
 import math
-
+from collections import Counter
+from typing import Counter as CounterType, Dict, List
 
 # TODO: consider replacing these methods with Gensim
 

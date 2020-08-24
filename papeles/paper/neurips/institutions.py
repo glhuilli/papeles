@@ -1,9 +1,8 @@
-from typing import Any, Counter as CounterType, Dict, List, Optional, Set
 from collections import Counter
+from typing import Any, Counter as CounterType, Dict, List, Optional, Set
 
 from papeles.paper.neurips import parsing_constants as pc
 from papeles.utils.header import get_tokens
-
 
 _FIND_LOCATION_INSTITUTIONS = ('university of california',
                                'university of massachusetts',
