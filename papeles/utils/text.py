@@ -5,6 +5,9 @@ from typing import Dict, Iterable, List, Optional
 from nltk.stem import PorterStemmer
 
 
+# FIXME: Highly likely that most of these methods can be replaced by something similar in SpaCy.
+
+
 _STOPWORDS = frozenset({
     "a", "about", "above", "after", "again", "against", "ain", "all", "am", "an", "and", "any",
     "are", "aren", "aren't", "as", "at", "be", "because", "been", "before", "being", "below",
