@@ -4,37 +4,37 @@ from typing import Any, Counter as CounterType, Dict, List, Optional, Set
 from papeles.paper.neurips import parsing_constants as pc
 from papeles.utils.header import get_tokens
 
-_FIND_LOCATION_INSTITUTIONS = ('university of california',
-                               'university of massachusetts',
-                               'eecs university of california',
-                               'university of texas',
-                               'the university of texas',
-                               'university of texas at')
-
+_FIND_LOCATION_INSTITUTIONS = ('university of california', 'university of massachusetts',
+                               'eecs university of california', 'university of texas',
+                               'the university of texas', 'university of texas at')
 
 _INSTITUTIONS_KEYWORDS = (
-    'university', 'group', 'dept', 'science', 'laboratory', 'lab', 'research', 'iiit',
-    'inc.', 'labs', 'institute', 'technology', 'tech', 'dept.', 'sciences', 'department', 'engineering',
-    'computer', 'ecole', 'inria', 'fraunhofer', 'inc', 'informatics', 'centre', 'mit', 'eecs', 'laboratoire',
-    'institut', 'team', 'college', 'universitat', 'cybernetics', 'mpi-is', 'eth', 'tu', 'google', 'nicta', 'unam',
-    'uc', 'technion', 'center', 'school', 'cnrs', 'univ', 'paristech', 'deepmind', 'ntu', 'politecnico',
-    'epfl', 'computational', 'neuroscience', 'ucla', 'caltech', 'stanford', 'cmu', 'nvidia', 'openai',
-    'centrum', 'amazon', 'technische', 'universität', 'seas', 'ut', 'mpi', 'université', 'ist', 'idsia', 'csail',
-    'uw-madison', 'tecnologia', 'research–almaden', 'sutd', 'usi-supsi', 'dipartament', 'informatica', 'usc',
-    'mathematics', 'matematica', 'cmla', 'ibm', 'leuven', 'nyu', 'foundation', 'uiuc', 'universite', 'facebook',
-    'twitter', 'linkedin', 'bbva', 'ucl', 'apple', 'ucsc', 'suny', 'corp', 'corporation', 'universidad', 'iit',
-    'kaist', 'nec', 'microsoft', 'sequel-inria/lifl-cnrs', 'deib', 'ucsd', 'mpi-sws', 'unc', 'icme',
-    'ltci', 'polytechnique', 'école', 'department', 'faculty', 'università', 'informatik', 'iupui', 'kth',
-    'riken', 'superieure', 'carnegie', 'ntt', 'purdue', 'collaboratory', 'aecom', 'minds', 'lg', 'electronics',
-    'uber', 'wustl', 'lip6', 'upmc', 'aist', 'unviersity', '2tti-chicago', 'academia', 'jst', 'presto', 'inria/ens',
-    'autonlab', 'ispgroup/icteam', 'fnrs', 'huawei', 'netflix', 'psychology', 'netﬂix', 'eurecom', 'ttic',
-    'institutes', 'vinai', 'département', 'qualcomm', 'technologies', 'instituto', 'crest', 'ensae',
-    'universita', 'cifar', 'departement', 'hkust', 'statistik', 'esat-stadius', 'yandex', 'philipps-universitat',
-    'friedrich-schiller-universität', 'montanuniversitat', 'wilhelms-universität', 'cnrs-univ', 'oracle', 'sri'
-)
+    'university', 'group', 'dept', 'science', 'laboratory', 'lab', 'research', 'iiit', 'inc.',
+    'labs', 'institute', 'technology', 'tech', 'dept.', 'sciences', 'department', 'engineering',
+    'computer', 'ecole', 'inria', 'fraunhofer', 'inc', 'informatics', 'centre', 'mit', 'eecs',
+    'laboratoire', 'institut', 'team', 'college', 'universitat', 'cybernetics', 'mpi-is', 'eth',
+    'tu', 'google', 'nicta', 'unam', 'uc', 'technion', 'center', 'school', 'cnrs', 'univ',
+    'paristech', 'deepmind', 'ntu', 'politecnico', 'epfl', 'computational', 'neuroscience', 'ucla',
+    'caltech', 'stanford', 'cmu', 'nvidia', 'openai', 'centrum', 'amazon', 'technische',
+    'universität', 'seas', 'ut', 'mpi', 'université', 'ist', 'idsia', 'csail', 'uw-madison',
+    'tecnologia', 'research–almaden', 'sutd', 'usi-supsi', 'dipartament', 'informatica', 'usc',
+    'mathematics', 'matematica', 'cmla', 'ibm', 'leuven', 'nyu', 'foundation', 'uiuc', 'universite',
+    'facebook', 'twitter', 'linkedin', 'bbva', 'ucl', 'apple', 'ucsc', 'suny', 'corp',
+    'corporation', 'universidad', 'iit', 'kaist', 'nec', 'microsoft', 'sequel-inria/lifl-cnrs',
+    'deib', 'ucsd', 'mpi-sws', 'unc', 'icme', 'ltci', 'polytechnique', 'école', 'department',
+    'faculty', 'università', 'informatik', 'iupui', 'kth', 'riken', 'superieure', 'carnegie', 'ntt',
+    'purdue', 'collaboratory', 'aecom', 'minds', 'lg', 'electronics', 'uber', 'wustl', 'lip6',
+    'upmc', 'aist', 'unviersity', '2tti-chicago', 'academia', 'jst', 'presto', 'inria/ens',
+    'autonlab', 'ispgroup/icteam', 'fnrs', 'huawei', 'netflix', 'psychology', 'netﬂix', 'eurecom',
+    'ttic', 'institutes', 'vinai', 'département', 'qualcomm', 'technologies', 'instituto', 'crest',
+    'ensae', 'universita', 'cifar', 'departement', 'hkust', 'statistik', 'esat-stadius', 'yandex',
+    'philipps-universitat', 'friedrich-schiller-universität', 'montanuniversitat',
+    'wilhelms-universität', 'cnrs-univ', 'oracle', 'sri')
 
 
 def add_location(line, institution):
+    # FIXME: skip too many branches for this particular method
+    # pylint: disable=R0912
     """
     Given a city associated to an institution that matched the pattern
     """
@@ -44,7 +44,7 @@ def add_location(line, institution):
         institution.append('university of california irvine')
     if 'santa cruz' in line:
         institution.append('university of california santa cruz')
-    if 'san diego':
+    if 'san diego' in line:
         institution.append('university of california san diego')
     if 'berkeley' in line:
         institution.append('university of california berkeley')
@@ -92,7 +92,8 @@ def parse_institutions(header: List[str]) -> List[List[str]]:
         if match_intersection:
             institutions_no_at.append([match_line_joined])
 
-        if '@' in line:  # means that there's an email in the line, usually at the end of the name of the institution
+        # means that there's an email in the line, usually at the end of the name of the institution
+        if '@' in line:
             institutions.append(institution)
             institution = []
             continue
@@ -132,10 +133,11 @@ def fix_institution_name(name: str) -> Optional[str]:
 
 def get_institutions_frequency(file_lines: Dict[str, List[str]]) -> Dict[str, int]:
     """
-    Given a dictionary with files and the respective relevant lines, get a Counter for all institutions
+    Given a dictionary with files and the respective relevant lines,
+    get a Counter for all institutions
     """
     inst_counter: CounterType[Any] = Counter()
-    for file, lines in list(file_lines.items()):
+    for _, lines in list(file_lines.items()):
         file_institutions = []
         for institution in parse_institutions(lines):
             if institution:

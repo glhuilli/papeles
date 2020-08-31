@@ -7,8 +7,11 @@ from papeles.utils import text as text_utils
 
 
 class Topics:
-
-    def __init__(self, corpus: List[str], keywords: List[str], n_grams: int = 3, n_topics: int = 100):
+    def __init__(self,
+                 corpus: List[str],
+                 keywords: List[str],
+                 n_grams: int = 3,
+                 n_topics: int = 100):
         self.keywords = keywords
         self.n_grams = n_grams
         self.n_topics = n_topics
@@ -50,14 +53,19 @@ class Topics:
         """
         text_list = []
         for document in self.corpus:
-            new_document = self._match_doc(text_utils.generate_ngram_text(document, self.n_grams), self.keywords)
+            new_document = self._match_doc(text_utils.generate_ngram_text(document, self.n_grams),
+                                           self.keywords)
             if len(new_document) > 1:
                 text_list.append(new_document)
 
         dictionary = corpora.Dictionary(text_list)
         corpus = [dictionary.doc2bow(text) for text in text_list]
         return self._extract_topics(
-            models.LdaModel(corpus, id2word=dictionary, num_topics=self.n_topics, decay=0.5, passes=10))
+            models.LdaModel(corpus,
+                            id2word=dictionary,
+                            num_topics=self.n_topics,
+                            decay=0.5,
+                            passes=10))
 
     def predict_topics(self, document: str):
         """
@@ -67,5 +75,6 @@ class Topics:
         predictions = {}
         if len(n_grams_doc) > 0:
             for topic, terms in self.topics.items():
-                predictions[topic] = len(set(n_grams_doc).intersection(set(terms)))/len(n_grams_doc)
+                predictions[topic] = len(set(n_grams_doc).intersection(
+                    set(terms))) / len(n_grams_doc)
         return predictions

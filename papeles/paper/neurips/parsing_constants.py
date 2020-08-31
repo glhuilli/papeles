@@ -30,7 +30,8 @@ INSTITUTIONS_MAPPING = {
     'the technion haifa israel': 'technion - israel institute of technology',
     'technion haifa israel': 'technion - israel institute of technology',
     'technion—israel institute of technology': 'technion - israel institute of technology',
-    'department of computer science technion - israel institute of technology': 'technion - israel institute of technology',
+    'department of computer science technion - israel institute of technology':
+    'technion - israel institute of technology',
     'the technion – israel institute of technology': 'technion - israel institute of technology',
     'ucla': 'university of california los angeles',
     'uiuc': 'university of illinois at urbana-champaign',
@@ -49,7 +50,8 @@ INSTITUTIONS_MAPPING = {
     'd-bsse eth zurich': 'eth zürich',
     'eecs university of california merced': 'university of california merced',
     'university of california at davis': 'university of california davis',
-    'department of computer science university of california irvine': 'university of california irvine',
+    'department of computer science university of california irvine':
+    'university of california irvine',
     'university of california berkeley berkeley ca 970': 'university of california berkeley',
     'the university of texas at dallas': 'university of texas at dallas',
     'university of texas austin': 'university of texas at austin',
@@ -68,12 +70,15 @@ INSTITUTIONS_MAPPING = {
     'university of texas austin tx usa': 'university of texas at austin',
     'university of texas at asutin': 'university of texas at austin',
     'university of texasaustin tx usa': 'university of texas at austin',
-    'department of computer science & engineering university of texas at arlington': 'university of texas at arlington',
+    'department of computer science & engineering university of texas at arlington':
+    'university of texas at arlington',
     'tencent ai lab university of texas at arlington': 'university of texas at arlington',
     'university of texas at arlington arlington tx 769': 'university of texas at arlington',
     'mccombs school of business university of texas at austin': 'university of texas at austin',
-    'one utsa circle university of texas at san antonio san antonio tx 789-6': 'university of texas at san antonio',
-    'school of biomedical informatics university of texas houston tx 77': 'university of texas at houston',
+    'one utsa circle university of texas at san antonio san antonio tx 789-6':
+    'university of texas at san antonio',
+    'school of biomedical informatics university of texas houston tx 77':
+    'university of texas at houston',
     'uc irvine': 'university of california irvine',
     'stanford university ca': 'stanford university',
     'computer science department stanford university stanford ca 9': 'stanford university',
@@ -83,7 +88,8 @@ INSTITUTIONS_MAPPING = {
     'uc santa barbara': 'university of california santa barbara',
     'uc santa barbara ca usa': 'university of california santa barbara',
     'uc santa cruz': 'university of california santa cruz',
-    'uc berkeley department of electrical engineering and computer sciences': 'university of california berkeley',
+    'uc berkeley department of electrical engineering and computer sciences':
+    'university of california berkeley',
     'uc berkeley eecs & icsi': 'university of california berkeley',
     'uc berkeley eecs and icsi': 'university of california berkeley',
     'uc berkeley and qut': 'university of california berkeley',
@@ -101,31 +107,41 @@ INSTITUTIONS_MAPPING = {
     'yahoo! research santa clara ca usa': 'yahoo! research',
     'qut': 'queensland university of technology',
     'university of california san diego cse': 'university of california san diego',
-    'department of psychology university of california san diego': 'university of california san diego',
+    'department of psychology university of california san diego':
+    'university of california san diego',
     'university of california san deigo': 'university of california san diego',
     'ece department uc santa barbara': 'university of california santa barbara',
-    'electrical and computer engineering department university of california los angeles': 'university of california los angeles',
-    'department of computer science university of california los angeles': 'university of california los angeles',
+    'electrical and computer engineering department university of california los angeles':
+    'university of california los angeles',
+    'department of computer science university of california los angeles':
+    'university of california los angeles',
     'department of computer science ucla los angeles ca 99': 'university of california los angeles',
     'university of southern california los angeles ca 989': 'university of california los angeles',
     'university of california los angles': 'university of california los angeles',
     'biomagnetic imaging lab uc san francisco': 'university of california san francisco',
-    'sloan-swartz center for theoretical neurobiology ucsf san francisco ca 9': 'university of california san francisco',
+    'sloan-swartz center for theoretical neurobiology ucsf san francisco ca 9':
+    'university of california san francisco',
     'university of california  irvine': 'university of california irvine',
     'university of california at irvine': 'university of california irvine',
-    'z department of computer science university of california davis usa': 'university of california davis',
+    'z department of computer science university of california davis usa':
+    'university of california davis',
     'department of mathematics uc davis usa': 'university of california davis',
     'helen wills neuroscience institute uc berkeley': 'university of california berkeley',
     'uc berekely': 'university of california berkeley',
-    'computer science division university of california berkeley': 'university of california berkeley',
-    'uc berkeley department of electrical engineering and computer science': 'university of california berkeley',
+    'computer science division university of california berkeley':
+    'university of california berkeley',
+    'uc berkeley department of electrical engineering and computer science':
+    'university of california berkeley',
     'dept of eecs uc berkeley': 'university of california berkeley',
-    'a department of electrical engineering and computer science uc berkeley': 'university of california berkeley',
+    'a department of electrical engineering and computer science uc berkeley':
+    'university of california berkeley',
     '⇧ university of california berkeley': 'university of california berkeley',
     'computer sciences uc berkeley': 'university of california berkeley',
     'uc berkeley department of statistics': 'university of california berkeley',
-    'department of cognitive and brain sciences university of california berkeley ca': 'university of california berkeley',
-    'electrical engineering & computer science and statistics university of california berkeley': 'university of california berkeley',
+    'department of cognitive and brain sciences university of california berkeley ca':
+    'university of california berkeley',
+    'electrical engineering & computer science and statistics university of california berkeley':
+    'university of california berkeley',
     'university of california – berkeley': 'university of california berkeley',
     'b department of statistics uc berkeley': 'university of california berkeley',
     'google brain ca usa': 'google brain',
@@ -134,7 +150,8 @@ INSTITUTIONS_MAPPING = {
     '8neurosciences phd program stanford university stanford ca 9': 'stanford university',
     '9department of psychology stanford university stanford ca 9': 'stanford university',
     'department of computer science stanford university stanford ca 9': 'stanford university',
-    'slac national accelerator laboratory stanford university stanford ca 99 usa': 'stanford university',
+    'slac national accelerator laboratory stanford university stanford ca 99 usa':
+    'stanford university',
     'neurosciences phd program stanford university stanford ca 9': 'stanford university',
     'department of neurobiology stanford university stanford ca 9': 'stanford university',
     'department of applied physics stanford university stanford ca 9': 'stanford university',
@@ -149,7 +166,8 @@ INSTITUTIONS_MAPPING = {
     'stanford university palo alto ca 9': 'stanford university',
     'university of california at berkeley ca usa': 'university of california berkeley',
     'uc berkeley eecs and icsi berkeley ca': 'university of california berkeley',
-    'department of computer science and engineering university of california san diego': 'university of california san diego',
+    'department of computer science and engineering university of california san diego':
+    'university of california san diego',
     'uc davis': 'university of california davis',
     'adobe research ca': 'adobe research',
     'adobe research seattle': 'adobe research',
@@ -270,7 +288,8 @@ INSTITUTIONS_MAPPING = {
     'uw-madison': 'university of wisconsin - madison',
     'university of washington': 'university of washington',
     'washington university in st louis': 'university of washington',
-    'paul g allen school of computer science & engineering university of washington': 'university of washington',
+    'paul g allen school of computer science & engineering university of washington':
+    'university of washington',
     'university of washington seattle': 'university of washington',
     'department of computer science university of washington': 'university of washington',
     'dept of psychology ucsd': 'university of california san diego',
@@ -333,7 +352,8 @@ INSTITUTIONS_MAPPING = {
     'université paris-saclay': 'universite paris-saclay',
     'cmla ens paris-saclay': 'ecole normal superieure',
     'university of alberta canada': 'university of alberta',
-    'department of computing science university of alberta edmonton ab t6g e8 canada': 'university of alberta',
+    'department of computing science university of alberta edmonton ab t6g e8 canada':
+    'university of alberta',
     'university of waterloo': 'university of waterloo',
     'university of waterloo canada': 'university of waterloo',
     'yahoo! labs': 'yahoo! research',
@@ -354,27 +374,34 @@ INSTITUTIONS_MAPPING = {
     'columbia business school': 'columbia university',
     'columbia university new york ny 7 usa': 'columbia university',
     'columbia university new york ny': 'columbia university',
-    'department of computer science university of british columbia': 'university of british columbia',
+    'department of computer science university of british columbia':
+    'university of british columbia',
     'korea advanced institute of science and technology': 'kaist',
-    'department of brain and cognitive engineering korea university seoul korea': 'korea university',
+    'department of brain and cognitive engineering korea university seoul korea':
+    'korea university',
     'korea university korea seoul': 'korea university',
     'seoul national university seoul korea': 'seoul national university',
     'sungkyunkwan university suwon korea 69': 'sungkyunkwan university',
-    'dept of computer science and engineering postech pohang korea': 'pohang university of science and technology',
+    'dept of computer science and engineering postech pohang korea':
+    'pohang university of science and technology',
     'applied research korea gracenote inc': 'gracenote',
     'tsinghua university beijing 8 china': 'tsinghua university',
-    'department of computer science and technology tsinghua university beijing 8 china': 'tsinghua university',
+    'department of computer science and technology tsinghua university beijing 8 china':
+    'tsinghua university',
     'iiis tsinghua university': 'tsinghua university',
     'tsinghua university beijing china': 'tsinghua university',
-    'state key lab for intell tech & systems tsinghua university beijing china': 'tsinghua university',
+    'state key lab for intell tech & systems tsinghua university beijing china':
+    'tsinghua university',
     'state key lab for intell tech & sys tsinghua university beijing china': 'tsinghua university',
     'nanjing university nanjing  china': 'nanjing university',
     'tencent ai lab china': 'tencent ai lab',
     'beijing normal university beijing 87 china': 'beijing normal university',
     'school of electronic engineering xidian university china': 'xidian university',
     'the chinese university of hong kong': 'chinese university of hong kong',
-    'department of information engineering the chinese university of hong kong': 'chinese university of hong kong',
-    'hong kong university of science and technology hong kong china': 'hong kong university of science and technology',
+    'department of information engineering the chinese university of hong kong':
+    'chinese university of hong kong',
+    'hong kong university of science and technology hong kong china':
+    'hong kong university of science and technology',
     'university of heidelberg heidelberg 69 germany': 'university of heidelberg',
     'university of freiburg germany': 'university of freiburg',
     'saarland university saarbrucken germany': 'saarland university',
@@ -392,7 +419,8 @@ INSTITUTIONS_MAPPING = {
     'yandex moscow russia': 'yandex',
     'samsung ai centre cambridge uk': 'samsung ai',
     'samsung ai center moscow': 'samsung ai',
-    'skolkovo institute of science and technology 6 moscow russia': 'skolkovo institute of science and technology',
+    'skolkovo institute of science and technology 6 moscow russia':
+    'skolkovo institute of science and technology',
     'university of pennsylvania philadelphia pa usa': 'university of pennsylvania',
     'wharton u penn': 'university of pennsylvania',
     'school of electronics engineering and computer science peking university': 'peking university',
@@ -401,10 +429,12 @@ INSTITUTIONS_MAPPING = {
     'usc': 'university of southern california',
     'univ of southern california': 'university of southern california',
     'univ of texas dallas': 'university of texas at dallas',
-    'department of electrical and computer engineering texas a&m university': 'texas a&m university',
+    'department of electrical and computer engineering texas a&m university':
+    'texas a&m university',
     'princeton university nj 8': 'princeton university',
     'princeton university and institute for advanced study': 'princeton university',
-    'department of operations research and financial engineering princeton university': 'princeton university',
+    'department of operations research and financial engineering princeton university':
+    'princeton university',
     'department of computer science princeton university': 'princeton university',
     '& princeton university': 'princeton university',
     'princeton university princeton nj 8': 'princeton university',
@@ -433,12 +463,15 @@ INSTITUTIONS_MAPPING = {
     'georgia tech': 'georgia institute of technology',
     'isye georgia institute of technology atlanta ga usa': 'georgia institute of technology',
     'georgia institute of technology atlanta ga  usa': 'georgia institute of technology',
-    'computational science and engineering georgia institute of technology': 'georgia institute of technology',
+    'computational science and engineering georgia institute of technology':
+    'georgia institute of technology',
     'college of computing georgia institute of technology': 'georgia institute of technology',
     'university of illinois urbana-champaign': 'university of illinois at urbana-champaign',
     'university of illinois at urbana champaign': 'university of illinois at urbana-champaign',
-    'psychology department university of illinois at urbana-champaign champaign il 68': 'university of illinois at urbana-champaign',
-    'university of illinois at urbana-champaign urbana il 68 usa': 'university of illinois at urbana-champaign',
+    'psychology department university of illinois at urbana-champaign champaign il 68':
+    'university of illinois at urbana-champaign',
+    'university of illinois at urbana-champaign urbana il 68 usa':
+    'university of illinois at urbana-champaign',
     'cambridge university': 'university of cambridge',
     'university of cambridge uk': 'university of cambridge',
     'university of cambridge cambridge uk': 'university of cambridge',
@@ -475,11 +508,13 @@ INSTITUTIONS_MAPPING = {
     'purdue university usa': 'purdue university',
     'mitsubishi electric research laboratories (merl)': 'mitsubishi electric research laboratories',
     'mitsubishi electric research labs (merl)': 'mitsubishi electric research laboratories',
-    'skolkovo institute of science and technology  moscow russia': 'skolkovo institute of science and technology',
+    'skolkovo institute of science and technology  moscow russia':
+    'skolkovo institute of science and technology',
     'weizmann institute': 'weizmann institute of science',
     'the hong kong polytechnic university hong kong': 'the hong kong polytechnic university',
     'machine intelligence technology alibaba group bellevue wa 98 usa': 'alibaba group',
-    'collaborative innovation center of novel software technology and industrialization': 'nanjing university',
+    'collaborative innovation center of novel software technology and industrialization':
+    'nanjing university',
     'department of computer science johns hopkins university': 'johns hopkins university',
     'the australian national university': 'australian national university',
     'nicta australian national university': 'australian national university',
@@ -489,15 +524,19 @@ INSTITUTIONS_MAPPING = {
     'deakin university geelong australia': 'deakin university',
     'computer science department ben gurion university': 'ben gurion university',
     'epfl - cvlab': 'epfl',
-    'department of management sciences the university of iowa iowa city ia  usa': 'university of iowa',
+    'department of management sciences the university of iowa iowa city ia  usa':
+    'university of iowa',
     'university of wisconsin - madison': 'university of wisconsin-madison',
     'university of wisconsin': 'university of wisconsin-madison',
-    'department of computer sciences university of wisconsin-madison': 'university of wisconsin-madison',
+    'department of computer sciences university of wisconsin-madison':
+    'university of wisconsin-madison',
     'cbcl mcgovern institute - massachusetts institute of technology': 'mit',
     'university of helsinki finland': 'university of helsinki',
     'department of computer science university of helsinki': 'university of helsinki',
-    'psychology department university of illinois at urbana-champaign champaign il 8': 'university of illinois at urbana-champaign',
-    'university of illinois at urbana-champaign urbana il 8 usa': 'university of illinois at urbana-champaign',
+    'psychology department university of illinois at urbana-champaign champaign il 8':
+    'university of illinois at urbana-champaign',
+    'university of illinois at urbana-champaign urbana il 8 usa':
+    'university of illinois at urbana-champaign',
     'rutgers university piscataway nj 88': 'rutgers university',
     'university of heidelberg heidelberg 9 germany': 'university of heidelberg',
     'temple university philadelphia pa 9 usa': 'temple university',
@@ -507,7 +546,8 @@ INSTITUTIONS_MAPPING = {
     'indian institute of technology bombay': 'iit bombay',
     'riken center for advanced intelligence project': 'riken aip',
     'riken': 'riken aip',
-    'department of computing science university of alberta edmonton ab tg e8 canada': 'university of alberta',
+    'department of computing science university of alberta edmonton ab tg e8 canada':
+    'university of alberta',
     'department of computing science university of alberta': 'university of alberta',
     'toyota technological institute': 'toyota technological institute at chicago',
     'toyota research institute': 'toyota technological institute at chicago',
@@ -520,7 +560,8 @@ INSTITUTIONS_MAPPING = {
     'national university of singapore singapore 77': 'national university of singapore',
     'netﬂix': 'netflix',
     'huawei technologies co ltd': 'huawei',
-    'institute for theoretical computer science graz university of technology': 'graz university of technology',
+    'institute for theoretical computer science graz university of technology':
+    'graz university of technology',
     'university of tehran tehran iran': 'university of tehran',
     'courant institute': 'new york university',
     'courant institute of mathematical sciences': 'new york university',
@@ -530,15 +571,18 @@ INSTITUTIONS_MAPPING = {
     'massachussetts institute of technology': 'mit',
     'department of brain and cognitive sciences massachusetts institute of technology': 'mit',
     'electrical engineering & computer science massachusetts institute of technology': 'mit',
-    'dept of electrical engineering and computer science massachusetts institute of technology usa': 'mit',
+    'dept of electrical engineering and computer science massachusetts institute of technology usa':
+    'mit',
     'department of eecs massachusetts institute of technology': 'mit',
     'center for brain science harvard university cambridge ma 8 usa': 'harvard university',
-    'department of neurosurgery brigham and women’s hospital harvard medical school': 'harvard university',
+    'department of neurosurgery brigham and women’s hospital harvard medical school':
+    'harvard university',
     'harvard university cambridge ma 8': 'harvard university',
     'speech and hearing bioscience and technology harvard university': 'harvard university',
     'harvard th chan school of public health': 'harvard university',
     'harvard seas': 'harvard university',
-    'and center for brain science harvard university cambridge massachusetts 8 usa': 'harvard university',
+    'and center for brain science harvard university cambridge massachusetts 8 usa':
+    'harvard university',
     'harvard college': 'harvard university',
     'school of engineering and applied science harvard university': 'harvard university',
     'harvard mit diffeo': 'harvard university',
@@ -547,9 +591,11 @@ INSTITUTIONS_MAPPING = {
     'ceecs at northwestern university dorfe at princeton university': 'princeton university',
     'princeton university department of computer science princeton nj 8': 'princeton university',
     'carl icahn laboratories #  princeton university': 'princeton university',
-    'department of operations research and financial engineering princeton nj 8': 'princeton university',
+    'department of operations research and financial engineering princeton nj 8':
+    'princeton university',
     'princeton univ': 'princeton university',
-    'princeton neuroscience institute department of psychology princeton university': 'princeton university',
+    'princeton neuroscience institute department of psychology princeton university':
+    'princeton university',
     'computer science princeton university': 'princeton university',
     'princeton princeton plasma physics laboratory': 'princeton university',
     'institute for advanced study princeton': 'princeton university',
@@ -561,68 +607,40 @@ INSTITUTIONS_MAPPING = {
     'siemens corporate technology princeton nj': 'siemens',
     'princeton university princeton nj usa': 'princeton university',
     'princeton university orfe': 'princeton university',
-    'department of psychology and neuroscience institute princeton university princeton nj usa': 'princeton university',
+    'department of psychology and neuroscience institute princeton university princeton nj usa':
+    'princeton university',
     'computer science department at princeton university': 'princeton university',
-    'department of electrical engineering  neuroscience institute princeton university': 'princeton university',
-    'princeton neuroscience institute and department of psychology princeton university': 'princeton university',
+    'department of electrical engineering  neuroscience institute princeton university':
+    'princeton university',
+    'princeton neuroscience institute and department of psychology princeton university':
+    'princeton university',
     'google ai princeton': 'google',
     'university of copenhagen denmark': 'university of copenhagen',
     'shanghai university of finance and economics': 'shanghai university'
-
 }
 
 INSTITUTIONS_DELETE = (
-    'engineering drive madison wi 706',
-    'department of computer science',
-    'department of statistics',
-    'stanford ca 90',
-    'dept of computer science',
-    'stanford ca 9',
-    'stanford ca',
-    'stanford ca and mountain view ca',
-    'serra mall stanford ca 9',
-    'stanford usa',
-    'engineering drive madison wi 76',
-    'electrical engineering',
-    'university park pa 68',
-    'university park pa 68 usa',
-    'college park',
-    'college of information and computer sciences',
-    'state college pa 68',
-    'university park pa usa',
-    'computer science department',
+    'engineering drive madison wi 706', 'department of computer science',
+    'department of statistics', 'stanford ca 90', 'dept of computer science', 'stanford ca 9',
+    'stanford ca', 'stanford ca and mountain view ca', 'serra mall stanford ca 9', 'stanford usa',
+    'engineering drive madison wi 76', 'electrical engineering', 'university park pa 68',
+    'university park pa 68 usa', 'college park', 'college of information and computer sciences',
+    'state college pa 68', 'university park pa usa', 'computer science department',
     'department of electrical and computer engineering',
-    'school of computer science and engineering',
-    'school of computer science',
-    'department of mathematics and computer science',
-    'computer science division',
-    'school of electrical and computer engineering',
-    'department of mathematics',
-    'the institute of statistical mathematics',
-    'department of electrical engineering',
-    'department of engineering',
-    'department of operations research and financial engineering',
-    'department of information systems',
-    'department of psychology',
-    'department of cs',
-    'school of informatics',
-    'school of economics and management',
-    'school of cs and eng',
-    'statistical laboratory cms',
-    'national engineering laboratory for big data software',
-    'coordinated science laboratory',
-    'engineering drive madison wi 7',
-    'computational vision and neuroscience',
-    'computational vision and neuroscience group',
-    'salt lake city ut',
-    'state college pa 8',
-    'university park pa 8 usa',
-    'university park pa 8',
+    'school of computer science and engineering', 'school of computer science',
+    'department of mathematics and computer science', 'computer science division',
+    'school of electrical and computer engineering', 'department of mathematics',
+    'the institute of statistical mathematics', 'department of electrical engineering',
+    'department of engineering', 'department of operations research and financial engineering',
+    'department of information systems', 'department of psychology', 'department of cs',
+    'school of informatics', 'school of economics and management', 'school of cs and eng',
+    'statistical laboratory cms', 'national engineering laboratory for big data software',
+    'coordinated science laboratory', 'engineering drive madison wi 7',
+    'computational vision and neuroscience', 'computational vision and neuroscience group',
+    'salt lake city ut', 'state college pa 8', 'university park pa 8 usa', 'university park pa 8',
     'electrical and computer engineering',
-    'department of electrical engineering and computer science',
-    'stanford ca 9 usa',
-    'electrical and computer engineering'
-)
+    'department of electrical engineering and computer science', 'stanford ca 9 usa',
+    'electrical and computer engineering')
 
 INSTITUTION_PARSING_FIXES = {
     'google brain google inc': ['google brain', 'google inc'],
@@ -637,46 +655,49 @@ INSTITUTION_PARSING_FIXES = {
     'ut austin  amazon': ['ut austin', 'amazon'],
     'ut austin amazon': ['ut austin', 'amazon'],
     'amazon and ut austin': ['amazon', 'ut austin'],
-    'the university of texas at austin microsoft research india': ['the university of texas at austin',
-                                                                   'microsoft research india'],
+    'the university of texas at austin microsoft research india':
+    ['the university of texas at austin', 'microsoft research india'],
     'amazon & university of texas at austin': ['amazon', 'university of texas at austin'],
-    'university of california at berkeley university of texas at austin icsi': ['university of california berkeley',
-                                                                                'university of texas at austin'],
+    'university of california at berkeley university of texas at austin icsi':
+    ['university of california berkeley', 'university of texas at austin'],
     'tti chicago and ut austin': ['tti chicago', 'ut austin'],
-    'queensland university of technology and uc berkeley': ['queensland university of technology', 'uc berkeley'],
+    'queensland university of technology and uc berkeley':
+    ['queensland university of technology', 'uc berkeley'],
     'uc merced nvidia': ['uc merced', 'nvidia'],
     'mit and uc berkeley': ['mit', 'uc berkeley'],
     'university of cambridge the alan turing institute university of california los angeles': [
-        'university of cambridge', 'the alan turing institute', 'university of california los angeles'],
+        'university of cambridge', 'the alan turing institute',
+        'university of california los angeles'
+    ],
     '(cid)eecs uc berkeley (cid)cs umass lowell': ['uc berkeley', 'umass lowell'],
     '(cid)eecs uc berkeley ∇ee tsinghua university': ['uc berkeley', 'tsinghua university'],
     'uc berkeley google': ['uc berkeley', 'google'],
     'uc berkeley & qut': ['uc berkeley', 'qut'],
     'university of california merced google': ['university of california merced', 'google'],
     'uc merced nvidia research': ['uc merced nvidia', 'research'],
-    'microsoft research cambridge ma the university of california at irvine': ['microsoft research cambridge ma',
-                                                                               'the university of california at irvine'],
-    'university of california irvine and the canadian institute for advanced research (cifar)': [
-        'university of california irvine', 'the canadian institute for advanced research (cifar)'],
+    'microsoft research cambridge ma the university of california at irvine':
+    ['microsoft research cambridge ma', 'the university of california at irvine'],
+    'university of california irvine and the canadian institute for advanced research (cifar)':
+    ['university of california irvine', 'the canadian institute for advanced research (cifar)'],
     'uc berkeley google brain': ['uc berkeley', 'google brain'],
     'openai & uc berkeley': ['openai', 'uc berkeley'],
     'uc merced and yahoo labs': ['uc merced', 'yahoo labs'],
     'covariantai & uc berkeley': ['covariantai', 'uc berkeley'],
-    'university of california merced nvidia  carnegie mellon university': ['university of california merced', 'nvidia',
-                                                                           'carnegie mellon university'],
-    'university of california berkeley and queensland university of technology': ['university of california berkeley',
-                                                                                  'queensland university of technology'],
-    'carnegie mellon university university of california berkeley peking university': ['carnegie mellon university',
-                                                                                       'university of california berkeley',
-                                                                                       'peking university'],
+    'university of california merced nvidia  carnegie mellon university':
+    ['university of california merced', 'nvidia', 'carnegie mellon university'],
+    'university of california berkeley and queensland university of technology':
+    ['university of california berkeley', 'queensland university of technology'],
+    'carnegie mellon university university of california berkeley peking university':
+    ['carnegie mellon university', 'university of california berkeley', 'peking university'],
     'courant institute and google': ['courant institute', 'google'],
     'hebrew university and google research': ['hebrew university', 'google research'],
     'mit google research': ['mit', 'google research'],
     'mit media lab and mcgovern institute': ['mit media lab', 'mcgovern institute'],
     'mit csail & mit-ibm watson ai lab': ['mit csail', 'mit-ibm watson ai lab'],
-    '(cid9) carnegie mellon university ♦ rice university': ['carnegie mellon university', 'rice university'],
-    'data6 the australian national university and the university of sydney': ['university of sydney',
-                                                                              'australian national university'],
+    '(cid9) carnegie mellon university ♦ rice university':
+    ['carnegie mellon university', 'rice university'],
+    'data6 the australian national university and the university of sydney':
+    ['university of sydney', 'australian national university'],
     'ecole centrale paris & inria saclay': ['ecole centrale paris', 'inria saclay'],
     'cnrs & sorbonne universite': ['cnrs', 'sorbonne universite'],
     'sorbonne université cnrs lip6 f-7 paris france': ['sorbonne université', 'cnrs', 'lip6'],
@@ -685,12 +706,13 @@ INSTITUTION_PARSING_FIXES = {
     'inria - ens': ['inria', 'ecole normale superieure'],
     'cea saclay and cnrs ura 6': ['cea saclay', 'cnrs'],
     'cnrs enpc esiee paris upem': ['cnrs', 'paristech', 'esiee', 'paris upem'],
-    'university of cambridge and alan turing institute': ['university of cambridge', 'alan turing institute'],
+    'university of cambridge and alan turing institute':
+    ['university of cambridge', 'alan turing institute'],
     'irisa umr 7 cnrs': ['irisa', 'cnrs'],
     'cea saclay and cnrs ura': ['cea saclay', 'cnrs'],
     'sorbonne université cnrs lip f-7 paris france': ['sorbonne université', 'cnrs'],
-    'data the australian national university and the university of sydney': ['australian national university',
-                                                                             'university of sydney'],
+    'data the australian national university and the university of sydney':
+    ['australian national university', 'university of sydney'],
     'the australian national university & nicta': ['australian national university', 'nicta'],
     'chuo university riken aip jst presto': ['chuo university', 'riken aip', 'jst presto'],
     'inria & ens': ['inria', 'ens'],
@@ -701,38 +723,42 @@ INSTITUTION_PARSING_FIXES = {
     'nicta and the university of nsw': ['nicta', 'university of nsw'],
     'university of nsw and nicta': ['university of nsw', 'nicta'],
     'hebrew university and google research tel-aviv': ['hebrew university', 'google research'],
-    'lcsl massachusetts institute of technology & istituto italiano di tecnologia cambridge ma': ['mit',
-                                                                                                  'istituto italiano di tecnologia'],
-    'massachusetts institute of technology & istituto italiano di tecnologia': ['mit',
-                                                                                'istituto italiano di tecnologia'],
+    'lcsl massachusetts institute of technology & istituto italiano di tecnologia cambridge ma': [
+        'mit', 'istituto italiano di tecnologia'
+    ],
+    'massachusetts institute of technology & istituto italiano di tecnologia': [
+        'mit', 'istituto italiano di tecnologia'
+    ],
     'princeton university  harvard psychology': ['princeton university', 'harvard university'],
     'twitter & harvard university': ['twitter', 'harvard university'],
     'google research & harvard university': ['harvard university', 'google research'],
     'harvard university facebook': ['harvard university', 'facebook'],
     'harvard university and twitter': ['twitter', 'harvard university'],
     'google brain and princeton': ['google brain', 'princeton university'],
-    'princeton university university of rochester pennsylvania state university': ['princeton university',
-                                                                                   'university of rochester',
-                                                                                   'pennsylvania state university'],
-    'johns hopkins university harbin institute of technology princeton university': ['johns hopkins university',
-                                                                                     'harbin institute of technology',
-                                                                                     'princeton university'],
+    'princeton university university of rochester pennsylvania state university': [
+        'princeton university', 'university of rochester', 'pennsylvania state university'
+    ],
+    'johns hopkins university harbin institute of technology princeton university': [
+        'johns hopkins university', 'harbin institute of technology', 'princeton university'
+    ],
     'princeton university and mit': ['princeton university', 'mit'],
-    'princeton university ?tencent ai lab northwestern university ⇧georgia tech': ['princeton university',
-                                                                                   'tencent ai lab',
-                                                                                   'northwestern university',
-                                                                                   'georgia tech'],
-    'princeton university tencent ai lab georgia tech': ['princeton university', 'tencent ai lab', 'georgia tech'],
+    'princeton university ?tencent ai lab northwestern university ⇧georgia tech': [
+        'princeton university', 'tencent ai lab', 'northwestern university', 'georgia tech'
+    ],
+    'princeton university tencent ai lab georgia tech': [
+        'princeton university', 'tencent ai lab', 'georgia tech'
+    ],
     'google brain and princeton university': ['princeton university', 'google brain'],
     'princeton university and google ai princeton': ['princeton university', 'google'],
-    '#university of tübingen and max planck institute for intelligent systems tübingen germany': ['max planck institute', 'university of tübingen'],
+    '#university of tübingen and max planck institute for intelligent systems tübingen germany': [
+        'max planck institute', 'university of tübingen'
+    ],
     'bar ilan university and google': ['bar ilan university', 'google'],
     'université de lorraine cnrs inria loria': ['universite de lorraine', 'cnrs', 'inria'],
     'univ rennes inria cnrs irisa': ['universite rennes', 'inria', 'cnrs', 'irisa'],
     'microsoft research and wharton u penn': ['microsoft research', 'wharton u penn'],
-    '(cid9)australian national university (anu) and national ict australia (nicta) canberra australia': ['australian national university', 'nicta']
+    '(cid9)australian national university (anu) and national ict australia (nicta) canberra australia':
+    ['australian national university', 'nicta']
 }
 
-COMMON_TYPOS = {
-    'institue': 'institute'
-}
+COMMON_TYPOS = {'institue': 'institute'}

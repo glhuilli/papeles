@@ -15,8 +15,9 @@ def flatten(paper: List[List[str]]) -> Iterable[str]:
 
 def get_sentences(sentences: List[str]) -> List[str]:
     """
-    Given the nature of the input is very messy and unreliable (from PDF parser), I decided not to use
-    a more sophisticated package for this (e.g. SpaCy) and build the sentences "manually".
+    Given the nature of the input is very messy and unreliable (from PDF parser),
+    I decided not to use a more sophisticated package for this (e.g. SpaCy) and
+    build the sentences "manually".
 
     1. tokenize by simple space
     2. keep any word with alphanumeric + stops (.!?)
@@ -72,8 +73,9 @@ def get_abstract_sentences(sentences: List[str], document_type: str = None) -> L
     """
     Extract abstract from paper (anything between "abstract" and "introduction")
 
-    Given the nature of the input is very messy and unreliable (from PDF parser), I decided not to use
-    a more sophisticated package for this (e.g. SpaCy) and build the sentences "manually".
+    Given the nature of the input is very messy and unreliable (from PDF parser),
+    I decided not to use a more sophisticated package for this (e.g. SpaCy)
+    and build the sentences "manually".
 
     1. tokenize by simple space
     2. keep any word with alphanumeric + stops (.!?)
@@ -81,7 +83,8 @@ def get_abstract_sentences(sentences: List[str], document_type: str = None) -> L
     4. create new sentences based in stops kept from step 2
     5. include anything after "abstract"
     6. exclude anything before "introduction"
-        6.1. FIXME: Depending on the type of document, there might be a better rule for this (e.g. ACM)
+        6.1. FIXME: Depending on the type of document, there might
+                    be a better rule for this (e.g. ACM)
     7. skip sentences with length 1
     """
     abstract = []
@@ -102,16 +105,16 @@ def get_abstract_sentences(sentences: List[str], document_type: str = None) -> L
     return _build_sentences(abstract)
 
 
-def get_references(sentences: List[str]) -> List[str]:
-    """
-    TODO:
-     - get references structure (title, authors, etc.)
-    """
-    pass
+# def get_references(sentences: List[str]) -> List[str]:
+#     """
+#     TODO:
+#      - get references structure (title, authors, etc.)
+#     """
 
 
 def _verify_abstract_stop(sentence: str, document_type: str = None) -> bool:
-    main_rule = sentence.lower() == 'introduction' or sentence.split(' ')[-1].lower() == 'introduction'
+    main_rule = sentence.lower() == 'introduction' or sentence.split(
+        ' ')[-1].lower() == 'introduction'
     if document_type == ACM_TYPE:
         return 'ccs concepts' in sentence.lower() or sentence.lower() == 'keywords' or main_rule
     return main_rule

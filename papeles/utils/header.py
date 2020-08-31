@@ -5,9 +5,12 @@ def clean_word(w: str) -> str:
     """
     Remove specific characters from word in a paper header
     """
-    return ''.join([c for c in w if c not in ['.', ',', ':', '´', '*', '∗', '†', '†',
-                                              '‡', '¨', '`', '§', '⇤', '£', '0',
-                                              '1', '2', '3', '4', '5', '6']])
+    return ''.join([
+        c for c in w if c not in [
+            '.', ',', ':', '´', '*', '∗', '†', '†', '‡', '¨', '`', '§', '⇤', '£', '0', '1', '2',
+            '3', '4', '5', '6'
+        ]
+    ])
 
 
 def get_tokens(line) -> List[str]:

@@ -6,7 +6,6 @@ from nltk.stem import PorterStemmer
 
 # FIXME: Highly likely that most of these methods can be replaced by something similar in SpaCy.
 
-
 _STOPWORDS = frozenset({
     "a", "about", "above", "after", "again", "against", "ain", "all", "am", "an", "and", "any",
     "are", "aren", "aren't", "as", "at", "be", "because", "been", "before", "being", "below",
@@ -131,7 +130,7 @@ def keep_word(token: str) -> bool:
 
 def ngrams_simple(text, n):
     word_list = text.split(' ')
-    return [word_list[i:i+n] for i in range(len(word_list)-(n-1))]
+    return [word_list[i:i + n] for i in range(len(word_list) - (n - 1))]
 
 
 def _clean_text(text):
@@ -199,7 +198,7 @@ def get_stem_mapping(corpus_words: List[str]) -> Dict[str, str]:
         del stem_mapping[i]
 
     main_stem_mapping = {}
-    for k, word_list in stem_mapping.items():
+    for _, word_list in stem_mapping.items():
         max_freq_word = sorted(Counter(word_list).items(), key=lambda x: x[1], reverse=True)[0]
         for w in set(word_list):
             main_stem_mapping[w] = max_freq_word[0]

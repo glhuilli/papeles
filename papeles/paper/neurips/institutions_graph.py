@@ -16,7 +16,7 @@ def build_institutions_graph(file_lines, metadata, inst_counter, freq=None, year
     - Frequency that the institution has across all periods of time
     - Year of publishing
     """
-    filtered_institutions = set([x[0] for x in inst_counter.items() if x[1] > freq and x[0]])
+    filtered_institutions = {x[0] for x in inst_counter.items() if x[1] > freq and x[0]}
     year_keys: Dict[str, List[str]] = defaultdict(list)
     for k, d in metadata.items():
         year_keys[d.get('year')].append(k)
@@ -24,7 +24,7 @@ def build_institutions_graph(file_lines, metadata, inst_counter, freq=None, year
     graph_node_files: Dict[str, Set[str]] = defaultdict(set)
     graph = nx.Graph()
     for file, lines in list(file_lines.items()):
-        if year and not (file in year_keys.get(year, {})):
+        if year and file not in year_keys.get(year, {}):
             continue
 
         file_institutions = institutions.get_file_institutions(lines, filtered_institutions)
@@ -52,7 +52,11 @@ def graph_to_d3js(graph, file: str) -> None:
     output_graph: Dict[str, Any] = {'nodes': [], 'links': []}
     nodes = set()
     for e in graph.edges():
-        output_graph['links'].append({'source': e[0], 'target': e[1], 'value': graph[e[0]][e[1]]['weight']})
+        output_graph['links'].append({
+            'source': e[0],
+            'target': e[1],
+            'value': graph[e[0]][e[1]]['weight']
+        })
         nodes.add(e[0])
         nodes.add(e[1])
     output_graph['nodes'] = [{'id': n, 'group': 1} for n in list(nodes)]
@@ -83,7 +87,7 @@ def dump_to_d3js_heb(graph, file: str) -> None:
 
 def plot_graph(graph, file: str) -> None:
     node_size = []
-    for node, degree in graph.degree():
+    for _, degree in graph.degree():
         if degree < 5:
             node_size.append(10)
         elif 5 <= degree < 10:
@@ -110,14 +114,15 @@ def plot_graph(graph, file: str) -> None:
             edge_width.append(6)
 
     plt.figure(1, figsize=(120, 120))
-    nx.draw(graph,
-            with_labels=True,
-            node_color=list(partition.values()),  # node_color_map,
-            node_size=node_size,
-            font_size=8,
-            edge_color=edge_colors,
-            width=edge_width,
-            alpha=0.8)
+    nx.draw(
+        graph,
+        with_labels=True,
+        node_color=list(partition.values()),  # node_color_map,
+        node_size=node_size,
+        font_size=8,
+        edge_color=edge_colors,
+        width=edge_width,
+        alpha=0.8)
     plt.savefig(file)
 
 
