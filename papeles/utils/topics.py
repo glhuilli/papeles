@@ -1,9 +1,26 @@
-from typing import List
+from typing import Dict, List, Optional
 
-from gensim import corpora
-from gensim import models
+from gensim import corpora, models
 
 from papeles.utils import text as text_utils
+
+
+class TopicPredictor:
+    def __init__(self, topics: Dict[str, List[str]]):
+        self.topics = topics
+        self.n_grams = len(list(topics.values())[0][0].split('_'))
+
+    def predict_topics(self, document: str) -> Dict[str, float]:
+        """
+        Given a collection of topics, predict which ones are found in a given document
+        """
+        n_grams_doc = text_utils.generate_ngram_text(document, self.n_grams)
+        predictions = {}
+        if len(n_grams_doc) > 0:
+            for topic, terms in self.topics.items():
+                predictions[topic] = len(set(n_grams_doc).intersection(
+                    set(terms))) / len(n_grams_doc)
+        return predictions
 
 
 class Topics:
@@ -11,15 +28,17 @@ class Topics:
                  corpus: List[str],
                  keywords: List[str],
                  n_grams: int = 3,
-                 n_topics: int = 100):
+                 n_topics: int = 100,
+                 random_state: Optional[int] = None):
         self.keywords = keywords
         self.n_grams = n_grams
         self.n_topics = n_topics
         self.corpus = corpus
+        self.random_state = random_state
         self.topics = self._get_topics()
 
     @staticmethod
-    def _match_doc(doc_n_grams, keywords):
+    def _match_doc(doc_n_grams: List[str], keywords: List[str]):
         """
         Very simple strategy for matching keywords to a document
 
@@ -28,7 +47,7 @@ class Topics:
         return list(set(doc_n_grams).intersection(set(keywords)))
 
     @staticmethod
-    def _extract_topics(model):
+    def _extract_topics(model) -> Dict[str, List[str]]:
         """
         Given a gensim model, extract all topics
         """
@@ -43,7 +62,7 @@ class Topics:
             final_topics[f'topic_{idx}'] = t
         return final_topics
 
-    def _get_topics(self):
+    def _get_topics(self) -> Dict[str, List[str]]:
         """
         Given a corpus and it's set of keywords, get high quality topics.
 
@@ -65,16 +84,11 @@ class Topics:
                             id2word=dictionary,
                             num_topics=self.n_topics,
                             decay=0.5,
-                            passes=10))
+                            passes=10,
+                            random_state=self.random_state))
 
-    def predict_topics(self, document: str):
+    def predict_topics(self, document: str) -> Dict[str, float]:
         """
-        Given a collection of topics, predict which ones are found in a given document
+        Predict which topics are more likely to be associated to the input document.
         """
-        n_grams_doc = text_utils.generate_ngram_text(document, self.n_grams)
-        predictions = {}
-        if len(n_grams_doc) > 0:
-            for topic, terms in self.topics.items():
-                predictions[topic] = len(set(n_grams_doc).intersection(
-                    set(terms))) / len(n_grams_doc)
-        return predictions
+        return TopicPredictor(self.topics).predict_topics(document)

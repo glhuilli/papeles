@@ -5,5 +5,6 @@
 # W1203: Use % formatting in logging functions and pass the % parameters as arguments (logging-fstring-interpolation)
 # C0103: Constant name doesn't conform to UPPER_CASE naming style (invalid-name)
 # W0511: Used when a warning note as FIXME or XXX is detected
+# R0913: Too many arguments (6/5) (too-many-arguments)
 
-disable=R0903,C0111,W1203,C0103,W0511
+disable=R0903,C0111,W1203,C0103,W0511,R0913
