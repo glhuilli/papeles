@@ -1,7 +1,6 @@
 from typing import Dict, List, Optional
 
-from gensim import corpora
-from gensim import models
+from gensim import corpora, models
 
 from papeles.utils import text as text_utils
 
