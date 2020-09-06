@@ -1,7 +1,7 @@
 import itertools
 import json
 from collections import defaultdict
-from typing import Any, Dict, List, Set
+from typing import Any, Dict, List, Optional, Set
 
 import community
 import matplotlib.pyplot as plt
@@ -10,12 +10,18 @@ import networkx as nx
 from papeles.paper.neurips import institutions
 
 
-def build_institutions_graph(file_lines, metadata, inst_counter, freq=None, year=None):
+def build_institutions_graph(file_lines,
+                             metadata,
+                             inst_counter,
+                             freq: int = None,
+                             year: str = None,
+                             keys_filter: Optional[Set[str]] = None):
     """
     Build graph using two filters:
     - Frequency that the institution has across all periods of time
     - Year of publishing
     """
+    keys_filter = keys_filter or set()
     filtered_institutions = {x[0] for x in inst_counter.items() if x[1] > freq and x[0]}
     year_keys: Dict[str, List[str]] = defaultdict(list)
     for k, d in metadata.items():
@@ -25,6 +31,8 @@ def build_institutions_graph(file_lines, metadata, inst_counter, freq=None, year
     graph = nx.Graph()
     for file, lines in list(file_lines.items()):
         if year and file not in year_keys.get(year, {}):
+            continue
+        if file not in keys_filter:
             continue
 
         file_institutions = institutions.get_file_institutions(lines, filtered_institutions)

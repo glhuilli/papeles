@@ -51,7 +51,7 @@ class Topics:
         """
         Given a gensim model, extract all topics
         """
-        unique_topics = []
+        unique_topics: List[List[str]] = []
         for i in range(0, model.num_topics - 1):
             t = [x[0] for x in model.show_topic(i)]
             if t in unique_topics:
