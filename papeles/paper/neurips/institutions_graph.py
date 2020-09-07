@@ -15,7 +15,8 @@ def build_institutions_graph(file_lines,
                              inst_counter,
                              freq: int = None,
                              year: str = None,
-                             keys_filter: Optional[Set[str]] = None):
+                             keys_filter: Optional[Set[str]] = None,
+                             directed: bool = False):
     """
     Build graph using two filters:
     - Frequency that the institution has across all periods of time
@@ -28,12 +29,16 @@ def build_institutions_graph(file_lines,
         year_keys[d.get('year')].append(k)
 
     graph_node_files: Dict[str, Set[str]] = defaultdict(set)
-    graph = nx.Graph()
+    if directed:
+        graph = nx.DiGraph()
+    else:
+        graph = nx.Graph()
     for file, lines in list(file_lines.items()):
         if year and file not in year_keys.get(year, {}):
             continue
-        if file not in keys_filter:
-            continue
+        if keys_filter:
+            if file not in keys_filter:
+                continue
 
         file_institutions = institutions.get_file_institutions(lines, filtered_institutions)
 
@@ -86,9 +91,14 @@ def dump_to_d3js_heb(graph, file: str) -> None:
         for edge in edges:
             for e in edge:
                 if e != node:
-                    if graph.degree[e] < graph.degree[node]:
+                    if graph.degree[e] <= graph.degree[node]:
                         targets.append(e)
-        output.append({'name': node, 'size': len(edges), 'edges': targets})
+                    else:
+                        targets.append(node)
+                else:
+                    targets.append(node)
+        if len(targets) > 0:
+            output.append({'name': node, 'size': len(edges), 'edges': targets})
     with open(file, 'w') as f:
         json.dump(output, f)
 
