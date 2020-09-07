@@ -97,7 +97,7 @@ def dump_to_d3js_heb(graph, file: str) -> None:
                         targets.append(node)
                 else:
                     targets.append(node)
-        if len(targets):
+        if len(targets) > 0:
             output.append({'name': node, 'size': len(edges), 'edges': targets})
     with open(file, 'w') as f:
         json.dump(output, f)
